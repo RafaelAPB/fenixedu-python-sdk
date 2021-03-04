@@ -15,17 +15,19 @@ ERROR_KEY = 'error'
 
 class FenixEduClient(object):
 
-	def __init__(self, config):
+	def __init__(self, config, local = None):
 		self.config = config
 		self.api_url = self.config.base_url + self.config.api_endpoint + 'v' + str(self.config.api_version)
 		self.oauth_url = self.config.base_url + endpoints.OAUTH
-
+		self.locale = locale 
+		
 	def _get_api_endpoint_url(self, endpoint, endpoint_params=None):
 		url = self.api_url + '/' + endpoint
 		if endpoint_params:
 			for key, value in endpoint_params.items():
 				url = url.replace(':' + key, str(value), 1)
-
+		if self.locale:
+			url = url + '?lang=' + str(self.locale)
 		return url
 
 	def _get_oauth_endpoint_url(self, endpoint):

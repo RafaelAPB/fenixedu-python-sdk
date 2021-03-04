@@ -37,7 +37,10 @@ fenix_python_sdk
 #### Instantiating the client
 * Instantiate an API client object in your source code
 
-<code>client = fenixedu.FenixEduClient(config)</code>
+<code>client = fenixedu.FenixEduClient(config, LOCALE)</code>
+
+where LOCALE is an optional argument. LOCALE can be 'pt-PT' or 'en-GB'.
+
 
 ### Authentication
 
